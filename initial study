@@ -84,6 +84,10 @@ SELECT
 
 
 
+<strong> Project 1 - Database for anthropometrics assessment
+	STEP 1: Create tables for all subject (maybe tests name);
+	Step 2: Combine two or more tables and create a bigger database
+	Step 3: Development a dashboard for the results <strong>
 
 /*CREATE Table Comparativo_Flag_Fem(
 	ID SERIAL PRIMARY KEY,
