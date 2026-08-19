@@ -1,0 +1,131 @@
+/*CREATE TABLE atendimentos_feitos(
+	ID SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(50) UNIQUE NOT NULL,
+	data_nascimento DATE NOT NULL,
+	primeiro_atendimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+;*/
+
+/*INSERT INTO atendimentos_feitos(nome, email, data_nascimento)
+	VALUES ('Daniel Quintal','danielquintal.nutricionista@gmail.com','26/10/1995'),
+		('Maria Silva','mariasilva@gmail.com','06/11/1992'),
+		('José Souza','josesouza@gmail.com','03/12/1990'),
+		('Carlos Duarte','carlosduarte@gmail.com','24/08/1994')
+
+;*/
+
+/*SELECT * FROM atendimentos_feitos;*/
+/*SELECT * FROM avaliacao_fisica;*/
+
+/*INSERT INTO atendimentos_feitos(nome, email, data_nascimento)
+VALUES ('Catia Souza','catiasouza123@gmail.com','03/09/2005')*/
+
+/*INSERT INTO avaliacao_fisica(peso, altura, percentual_gordura, massa_muscular)
+	VALUES ('65','1,63','10%','54,7'),
+	 ('110','1,90','13%','88,4'),
+	 ('77','1,86','22%','78,8'),
+	 ('75','1,56','27%','58,8')
+	
+	;*/
+
+/*SELECT * FROM atendimentos_feitos WHERE nome LIKE 'M%';*/
+
+/*SELECT * FROM atendimentos_feitos ORDER BY data_nascimento ASC;*/
+
+/*UPDATE atendimentos_feitos SET email = 'josesouza1@gmail.com' WHERE id = 3;*/
+
+/*DELETE FROM atendimentos_feitos WHERE id = 3;*/
+
+/*ALTER TABLE atendimentos_feitos 
+	DROP column email;*/
+	
+/*CREATE Table avaliacao_fisica(
+	ID SERIAL PRIMARY KEY,
+	data_avaliacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	peso VARCHAR(10),
+	altura VARCHAR(10),
+	percentual_gordura VARCHAR(10),
+	massa_muscular VARCHAR(10)
+	
+)
+;*/
+
+/*SELECT atendimentos_feitos.ID, atendimentos_feitos.name 
+	FROM atendimentos_feitos 
+		INNER JOIN avaliacao_fisica
+		ON avaliacao_fisica.ID = atendimentos_feitos.ID;
+;*/
+
+SELECT 
+	atendimentos_feitos.nome, 
+	atendimentos_feitos.data_nascimento, 
+	avaliacao_fisica.peso,
+	avaliacao_fisica.altura,
+	avaliacao_fisica.percentual_gordura,
+	avaliacao_fisica.massa_muscular
+		FROM atendimentos_feitos
+			INNER JOIN avaliacao_fisica
+			ON atendimentos_feitos.id = avaliacao_fisica.id
+
+;
+
+/*CREATE Table Evolucao(
+	ID SERIAL PRIMARY KEY,
+	avaliacao_1 DATE NOT NULL,
+	avaliacao_2 DATE NOT NULL,
+	avaliacao_3 DATE NOT NULL,
+	avaliacao_4 DATE NOT NULL,
+	avaliacao_5 DATE NOT NULL
+	
+); */
+
+/*DROP Table Atendimentos_feitos, avaliacao_fisica;*/
+
+
+
+
+/*CREATE Table Comparativo_Flag_Fem(
+	ID SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	DATA TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	data_nascimento DATE NOT NULL,
+	Altura VARCHAR(10),	
+	Peso VARCHAR(10),	
+	IMC	VARCHAR(10),
+	Gordura_total VARCHAR(10),	
+	Massa_adiposa VARCHAR(10),	
+	Gordura_visceral VARCHAR(10),	
+	Massa_muscular VARCHAR(10), 
+	agua_corporal VARCHAR(10),	
+	tmb  VARCHAR(10),	
+	Cb_contraido VARCHAR(10),
+	Cb_relaxado	VARCHAR(10),
+	Ccintura VARCHAR(10),
+	Cperna VARCHAR(10),
+	Comprimento_Perna VARCHAR(10),	
+	Dc_panturrilha VARCHAR(10),
+	Dc_biceps VARCHAR(10),	
+	Dc_triceps VARCHAR(10),	
+	Dc_subescapular VARCHAR(10),	
+	Dc_suprailiaca VARCHAR(10),	
+	Dc_axilar VARCHAR(10),	
+	Dc_peitoral VARCHAR(10),	
+	Dc_abdominal VARCHAR(10),	
+	Dc_coxa_medial VARCHAR(10),	
+	Dc_flanco VARCHAR(10),	
+	Faulkner_percentual_gordura VARCHAR(10),
+	DC_FEM VARCHAR(10),	
+	Pollock_7__percentual_gordura VARCHAR(10)
+
+);*/
+
+/*SELECT * FROM comparativo_flag_fem;*/
+
+CREATE EXTENSION postgis
+
+
+/*COPY public.Comparativo_Flag_Fem
+	FROM 'C:\Users\clini\OneDrive\Documentos\Planilha Comparação FLAG (2) (1).csv'
+		DELIMITER ';'
+			CSV HEADER*/
