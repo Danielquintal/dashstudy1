@@ -1,3 +1,40 @@
+Comandos que estou estudando até agora:
+CREATE: Função de criar algo
+DROP: Função de deletar
+SELECT: Selecionar de uma tabela, banco de dados
+FROM: de onde selecionei os dados (tabela ou BD)
+WHERE: Onde eu quero propor a mudança
+NOT NULL: Para criação de tabelas, o not null implica que a coluna não poderá ter valores nulos
+INSERT INTO: Inserir dados em algum lugar
+VALUES: Valores que irei inserir
+ALTER TABLE: Alterar tabela
+ALTER DATA BASE: Alterar banco de dados
+DELETE FROM: Deletar algum dado de um lugar específico
+INNER JOIN: Dados de um lugar externo que irei integrar em um local inicial
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*CREATE TABLE atendimentos_feitos(
 	ID SERIAL PRIMARY KEY,
 	nome VARCHAR(50) NOT NULL,
