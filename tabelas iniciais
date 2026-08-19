@@ -52,10 +52,15 @@ COPY comparativo_flag_fem
 		DELIMITER ';' 
 			CSV HEADER;
 
-Try to fix the following error:
+\\*Try to fix the following error:
 
-\\*ERROR:  could not open file "C:\Users\clini\Downloads\Comparativo_Flag_Fem.csv" for reading: Permission denied
+ERROR:  could not open file "C:\Users\clini\Downloads\Comparativo_Flag_Fem.csv" for reading: Permission denied
 HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy. 
 
 ERRO:  could not open file "C:\Users\clini\Downloads\Comparativo_Flag_Fem.csv" for reading: Permission denied
 SQL state: 42501*//
+
+ALTER TABLE Comparativo_Flag_Fem
+	DROP nome;
+
+\* Removed names from table for security and privacy*/
