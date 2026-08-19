@@ -1,0 +1,48 @@
+CREATE DATABASE atendimentos;
+\*Primeiro banco de dados feito no postgresql*/
+\*Tabela inicial*/
+
+CREATE Table Comparativo_Flag_Fem(
+	ID SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	DATA TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	data_nascimento DATE NOT NULL,
+	Altura VARCHAR(10),	
+	Peso VARCHAR(10),	
+	IMC	VARCHAR(10),
+	Gordura_total VARCHAR(10),	
+	Massa_adiposa VARCHAR(10),	
+	Gordura_visceral VARCHAR(10),	
+	Massa_muscular VARCHAR(10), 
+	agua_corporal VARCHAR(10),	
+	tmb  VARCHAR(10)
+);
+
+CREATE TABLE avaliacao_antro(
+  ID SERIAL PRIMARY KEY,
+	Cb_contraido VARCHAR(10),
+	Cb_relaxado	VARCHAR(10),
+	Ccintura VARCHAR(10),
+	Cperna VARCHAR(10),
+	Comprimento_Perna VARCHAR(10),	
+	Dc_panturrilha VARCHAR(10),
+	Dc_biceps VARCHAR(10),	
+	Dc_triceps VARCHAR(10),	
+	Dc_subescapular VARCHAR(10),	
+	Dc_suprailiaca VARCHAR(10),	
+	Dc_axilar VARCHAR(10),	
+	Dc_peitoral VARCHAR(10),	
+	Dc_abdominal VARCHAR(10),	
+	Dc_coxa_medial VARCHAR(10),	
+	Dc_flanco VARCHAR(10)
+);
+
+CREATE TABLE  resultados_avaliacao_antro(
+  ID SERIAL PRIMARY KEY,
+	Faulkner_percentual_gordura VARCHAR(10),
+	Pollock_7_Gordura VARCHAR(10),
+	DC VARCHAR(10),
+	DC_FEM VARCHAR(10),	
+	Pollock_7_percentual_gordura VARCHAR(10)
+
+);
