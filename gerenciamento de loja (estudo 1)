@@ -1,0 +1,114 @@
+-------------------- GERENCIAMENTO DE UMA LOJA --------------------
+
+-- 20 funcionários
+
+-- Alterei o nome de um banco de dados existente
+-- ALTER DATABASE postgres RENAME TO gerenciamentofake;
+
+--Criação de tabela para gerenciamento com os dados dos funcionários
+CREATE TABLE gerenciamento_func(
+	ID SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(50) UNIQUE NOT NULL,
+	cargo VARCHAR(50),
+	salario INT NOT NULL
+);
+
+-- Visualização da tabela
+SELECT * FROM gerenciamento_func
+  ORDER BY salario DESC;
+
+-- Criação dos dados para a alimentação da tabela
+INSERT INTO gerenciamento_func (nome, email, cargo, salario)
+	VALUES
+		('Catia Souza','catiasouza123@gmail.com', 'CEO', '20000'),
+		('Daniel Quintal','danielquintal.porteiro@gmail.com', 'porteiro', '1500'),
+		('Maria Silva','mariasilva@gmail.com', 'CFO', '18500'),
+		('José Souza','josesouza@gmail.com', 'VP', '18000'),
+		('Andreia Silva', 'andreias@hotmail.com', 'gerente', '6000'),
+		('Thomas Edson', 'thomastt@gmail.com', 'estagiario', '1500'),
+		('Renata Souza', 'rs@gmail.com', 'estagiaria', '1500'),
+		('Silvio Souza', 'ss@gmail.com', 'mkt', '6000'),
+		('Carol James', 'cj@gmail.com', 'mkt', '6800'),
+		('John', 'john@hotmail.com', 'UX', '5000'),
+		('James Rodriguez', 'jr@gmail.com', 'trainee', '800'),
+		('Connor McGreggor', 'cmc@yahoo.com', 'estagiario', '1500'),
+		('Lionel Ronaldo', 'lr7@gmail.com', 'gerente', '6500'),
+		('Neymar dos Santos', 'njr@gmail.com', 'telemarketing', '3000'),
+		('Flaco Palmeira', 'sep@gmail.com', 'telemarketing', '3000'),
+		('Henrique Souza', 'hs@hotmail.com', 'telemarketing', '3000'),
+		('Juscelino Almeida', 'ja@gmail.com',  'telemarketing', '3000'),
+		('Eliana Santos', 'es1@gmail.com', 'CTO', '18500'),
+		('Elaide Santos', 'es@gmail.com', 'CTO', '18500'),
+		('Carlos Duarte','carlosduarte@gmail.com','TI','8800')
+;
+
+-- Somatório dos salários da empresa = despesa fixa
+SELECT SUM (salario) AS despesa_fixa
+  FROM gerenciamento_func;
+
+-- Filtragem os salários
+SELECT FROM gerenciamento_func
+	WHERE salario = '3000';
+
+-- Filtragem de duas variáveis: no caso, quero saber se há gerente que recebe mais de 5000 reais de salário
+SELECT FROM gerenciamento_func
+	WHERE cargo = 'gerente' AND salario > '5000';
+
+-- Somatório da média das despesas fixas
+SELECT AVG (salario) AS media_despesa_fixa
+  FROM gerenciamento_func;
+
+-- Criação de outra tabela com contas a pagar --
+CREATE TABLE contas_apagar(
+	ID SERIAL PRIMARY KEY,
+		nome VARCHAR(50) NOT NULL,
+		vencimento VARCHAR(50),
+		VALOR INT NOT NULL	
+);
+
+INSERT INTO contas_apagar (nome, vencimento, valor)
+	VALUES
+		('aluguel', 'dia 10', '27000'),
+		('agua', 'dia 17', '832'),
+		('luz', 'dia 5', '2200'),
+		('emprestimos', 'dia 27', '57360'),
+		('manutenção', 'dia 20', '12398')
+;
+
+-- Visualização da tabela
+SELECT * FROM contas_apagar
+  ORDER BY valor DESC;
+
+-- Somatório dos salários da empresa = despesa variavel
+SELECT SUM (valor) AS despesa_variavel
+  FROM contas_apagar;
+
+-- Somatório da média das despesas variáveis
+SELECT AVG (valor) AS media_despesa_variavel
+  FROM contas_apagar;
+
+-- Juntei as duas tabelas para saber o custo da operação
+INSERT INTO contas_apagar (nome, valor) 
+	SELECT nome, salario
+		FROM gerenciamento_func;
+
+-- TABELA DE FATURAMENTO MENSAL
+/*CREATE TABLE Faturamento(
+	ID SERIAL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	VALOR INT NOT NULL
+);*/
+
+/*INSERT INTO Faturamento (nome, valor)
+	VALUES
+		('Vendas', '199800'),
+		('Patrocinio', '20000')
+;*/
+
+/*INSERT INTO contas_apagar (nome, valor) 
+	SELECT nome, valor
+		FROM Faturamento;*/
+
+
+
