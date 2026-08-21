@@ -24,7 +24,7 @@ INSERT INTO categorias (nome)
 ;
 
 --SELECT * FROM categorias;
-
+																			-- TABELA PRODUTOS --
 CREATE TABLE produtos(
 	ID SERIAL PRIMARY KEY NOT NULL,
 	nome VARCHAR(100) NOT NULL,
@@ -78,5 +78,19 @@ SELECT nome, preco
 		WHERE preco > ALL
 				(SELECT preco FROM produtos WHERE categoria_id = '2');
 
+																			--TABELA CLIENTES--
+CREATE TABLE clientes(
+	ID SERIAL PRIMARY KEY NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	cidade VARCHAR(20) NOT NULL,
+	data_cadastro VARCHAR (50) NOT NULL
+);
 
+
+INSERT INTO clientes(nome, email, cidade, data_cadastro)
+	VALUES
+	('Ana Souza','ana.souza@email.com','São Paulo','2023-01-15')
+	('Bruno Lima','bruno.lima@email.com','Rio de Janeiro','20/02/2023')
+	('Carla Mendes'	'carla.mendes@email.com'	'Belo Horizonte'	'05/03/2023')
 
