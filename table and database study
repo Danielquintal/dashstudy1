@@ -231,19 +231,19 @@ SELECT
 	('Mariana Teixeira','mariana.teixeira@email.com','Curitiba','14/09/2023'),
 	('Nelson Ramos','nelson.ramos@email.com','Belo Horizonte','01/10/2023'),
 	('Olívia Castro','olivia.castro@email.com','Porto Alegre','19/10/2023')
-;*/
+;
 
--- SELECT * FROM clientes;
+SELECT * FROM clientes;
 
-/*CREATE TABLE pedidos(
+CREATE TABLE pedidos(
 
 	ID SERIAL PRIMARY KEY NOT NULL,
 		cliente_id VARCHAR(100) NOT NULL,
 		data_pedido VARCHAR(100) NOT NULL,
 		status VARCHAR(20) NOT NULL
-);*/
+);
 
-/*INSERT INTO pedidos(cliente_id, data_pedido, status)
+INSERT INTO pedidos(cliente_id, data_pedido, status)
 	VALUES
 	('1', '2024-01-05','entregue'),
 	('2', '2024-01-08','entregue'),
@@ -260,7 +260,7 @@ SELECT
 	('10', '2024-02-07','em transporte'),
 	('16', '2024-01-05','processando'),
 	('18', '2024-01-03','entregue')
-;*/
+;
 
 ALTER TABLE pedidos ADD data_pedido VARCHAR(100) NOT NULL
 
@@ -278,5 +278,50 @@ SELECT
 ;
 
 	
+CREATE TABLE avaliacoes(
+	ID SERIAL PRIMARY KEY NOT NULL,
+		produto_id VARCHAR(100) NOT NULL,
+		cliente_id VARCHAR(100) NOT NULL,
+		nota VARCHAR(20) NOT NULL,
+		comentario VARCHAR(100) NOT NULL,
+		data VARCHAR (50) NOT NULL
+		);
 
+INSERT INTO avaliacoes(produto_id, cliente_id, nota, comentario, data)
+	VALUES
+	('1','1','5','Excelente qualidade de som','2024-01-10'),
+	('2','6','4','Muito bom, mas caro','2024-02-10'),
+	('3','4','5','Câmera surpreendente','2024-01-25'),
+	('4','1','4','Ótimo livro, recomendo','2024-01-08'),
+	('10','5','3','Boa mas o couro é fraco','2024-02-08'),
+	('2','9','5','Rápido e leve','2024-03-05'),
+	('16','7','4','Café saboroso','2024-02-18'),
+	('11','2','5','Confortável para corrida','2024-03-06'),
+	('14','8','3','Fragrância não durou muito','2024-03-03'),
+	('19','13','5','Teclado ótimo para digitação','2024-04-11'),
+	('8','9','4','Prática e resistente','2024-03-02'),
+	('5','11','5','Livro maravilhoso','2024-03-11'),
+	('7','3','2','Tecido fino demais','2024-01-13'),
+	('20','12','5','Leitura obrigatória','2024-03-16'),
+	('17','6','4','Chocolate saboroso','2024-02-15')
+;
+
+
+SELECT * FROM avaliacoes
+SELECT * FROM clientes
+
+SELECT 
+	clientes.id,
+	clientes.nome, 
+	clientes.email, 
+	pedidos.status,
+	pedidos.data_pedido,
+	avaliacoes.nota,
+	avaliacoes.comentario,
+	avaliacoes.data
+		FROM clientes
+			INNER JOIN pedidos
+   				 ON clientes.id = pedidos.id
+					INNER JOIN avaliacoes
+   						 ON pedidos.id = avaliacoes.id;
 	
