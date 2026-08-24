@@ -310,7 +310,7 @@ INSERT INTO avaliacoes(produto_id, cliente_id, nota, comentario, data)
 SELECT * FROM avaliacoes
 SELECT * FROM clientes
 
-SELECT 
+SELECT
 	clientes.id,
 	clientes.nome, 
 	clientes.email, 
@@ -323,5 +323,6 @@ SELECT
 			INNER JOIN pedidos
    				 ON clientes.id = pedidos.id
 					INNER JOIN avaliacoes
-   						 ON pedidos.id = avaliacoes.id;
+   						 	ON pedidos.id = avaliacoes.id
+								-- posso usar WHERE para filtrar as notas WHERE nota < '5';
 	
