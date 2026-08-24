@@ -90,7 +90,193 @@ CREATE TABLE clientes(
 
 INSERT INTO clientes(nome, email, cidade, data_cadastro)
 	VALUES
-	('Ana Souza','ana.souza@email.com','São Paulo','2023-01-15')
-	('Bruno Lima','bruno.lima@email.com','Rio de Janeiro','20/02/2023')
-	('Carla Mendes'	'carla.mendes@email.com'	'Belo Horizonte'	'05/03/2023')
+	('Ana Souza','ana.souza@email.com','São Paulo','2023-01-15'),
+	('Bruno Lima','bruno.lima@email.com','Rio de Janeiro','20/02/2023'),
+	('Carla Mendes','carla.mendes@email.com','Belo Horizonte','05/03/2023'),
+	('Diego Alves','diego.alves@email.com','Curitiba','22/03/2023'),
+	('Elisa Ferreira','elisa.ferreira@email.com','Porto Alegre','10/04/2023'),
+	('Fábio Costa','fabio.costa@email.com','Salvador','01/05/2023'),
+	('Gabriela Rocha','gabriela.rocha@email.com','Recife','18/05/2023'),
+	('Hugo Martins','hugo.martins@email.com','São Paulo','02/06/2023'),
+	('Isabela Nunes','isabela.nunes@email.com','Fortaleza','25/06/2023'),
+	('João Pedro','joao.pedro@email.com','Brasília','11/07/2023'),
+	('Karina Dias','karina.dias@email.com','Rio de Janeiro','03/08/2023'),
+	('Lucas Barbosa','lucas.barbosa@email.com','São Paulo','29/08/2023'),
+	('Mariana Teixeira','mariana.teixeira@email.com','Curitiba','14/09/2023'),
+	('Nelson Ramos','nelson.ramos@email.com','Belo Horizonte','01/10/2023'),
+	('Olívia Castro','olivia.castro@email.com','Porto Alegre','19/10/2023')
+;
 
+SELECT * FROM clientes;
+
+CREATE TABLE pedidos(
+
+	ID SERIAL PRIMARY KEY NOT NULL,
+		cliente_id VARCHAR(100) NOT NULL,
+		data_pedido VARCHAR(100) UNIQUE NOT NULL,
+		status VARCHAR(20) NOT NULL
+);
+
+/*INSERT INTO pedidos(cliente_id, data_pedido, status)
+	VALUES
+	('1', '2024-01-05','entregue'),
+	('2', '2024-01-08','entregue'),
+	('3', '2024-01-05','entregue'),
+	('1', '2024-01-05','cancelado'),
+	('4', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('9', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('6', '2024-01-05','entregue'),
+	('1', '2024-03-22','cancelado'),
+	('15', '2024-05-05','entregue'),
+	('17', '2024-01-05','entregue'),
+	('10', '2024-02-07','em transporte'),
+	('16', '2024-01-05','processando'),
+	('18', '2024-01-03','entregue')
+;*/
+
+-- ALTER TABLE pedidos ADD data_pedido VARCHAR(100) NOT NULL
+
+-- SELECT * FROM pedidos
+
+SELECT 
+	clientes.nome, 
+	clientes.email, 
+	pedidos.cliente_id,
+	pedidos.status,
+	pedidos.data_pedido
+		FROM clientes
+			INNER JOIN pedidos
+			ON pedidos.id = clientes.id
+;
+
+INSERT INTO clientes(nome, email, cidade, data_cadastro)
+	VALUES
+	('Ana Souza','ana.souza@email.com','São Paulo','2023-01-15'),
+	('Bruno Lima','bruno.lima@email.com','Rio de Janeiro','20/02/2023'),
+	('Carla Mendes','carla.mendes@email.com','Belo Horizonte','05/03/2023'),
+	('Diego Alves','diego.alves@email.com','Curitiba','22/03/2023'),
+	('Elisa Ferreira','elisa.ferreira@email.com','Porto Alegre','10/04/2023'),
+	('Fábio Costa','fabio.costa@email.com','Salvador','01/05/2023'),
+	('Gabriela Rocha','gabriela.rocha@email.com','Recife','18/05/2023'),
+	('Hugo Martins','hugo.martins@email.com','São Paulo','02/06/2023'),
+	('Isabela Nunes','isabela.nunes@email.com','Fortaleza','25/06/2023'),
+	('João Pedro','joao.pedro@email.com','Brasília','11/07/2023'),
+	('Karina Dias','karina.dias@email.com','Rio de Janeiro','03/08/2023'),
+	('Lucas Barbosa','lucas.barbosa@email.com','São Paulo','29/08/2023'),
+	('Mariana Teixeira','mariana.teixeira@email.com','Curitiba','14/09/2023'),
+	('Nelson Ramos','nelson.ramos@email.com','Belo Horizonte','01/10/2023'),
+	('Olívia Castro','olivia.castro@email.com','Porto Alegre','19/10/2023')
+;*/
+
+-- SELECT * FROM clientes;
+
+/*CREATE TABLE pedidos(
+
+	ID SERIAL PRIMARY KEY NOT NULL,
+		cliente_id VARCHAR(100) NOT NULL,
+		data_pedido VARCHAR(100) UNIQUE NOT NULL,
+		status VARCHAR(20) NOT NULL
+);*/
+
+/*INSERT INTO pedidos(cliente_id, data_pedido, status)
+	VALUES
+	('1', '2024-01-05','entregue'),
+	('2', '2024-01-08','entregue'),
+	('3', '2024-01-05','entregue'),
+	('1', '2024-01-05','cancelado'),
+	('4', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('9', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('6', '2024-01-05','entregue'),
+	('1', '2024-03-22','cancelado'),
+	('15', '2024-05-05','entregue'),
+	('17', '2024-01-05','entregue'),
+	('10', '2024-02-07','em transporte'),
+	('16', '2024-01-05','processando'),
+	('18', '2024-01-03','entregue')
+;*/
+
+-- ALTER TABLE pedidos ADD data_pedido VARCHAR(100) NOT NULL
+
+-- SELECT * FROM pedidos
+
+SELECT 
+	clientes.nome, 
+	clientes.email, 
+	pedidos.cliente_id,
+	pedidos.status,
+	pedidos.data_pedido
+		FROM clientes
+			INNER JOIN pedidos
+			ON pedidos.id = clientes.id
+;
+
+	INSERT INTO clientes(nome, email, cidade, data_cadastro)
+	VALUES
+	('Ana Souza','ana.souza@email.com','São Paulo','2023-01-15'),
+	('Bruno Lima','bruno.lima@email.com','Rio de Janeiro','20/02/2023'),
+	('Carla Mendes','carla.mendes@email.com','Belo Horizonte','05/03/2023'),
+	('Diego Alves','diego.alves@email.com','Curitiba','22/03/2023'),
+	('Elisa Ferreira','elisa.ferreira@email.com','Porto Alegre','10/04/2023'),
+	('Fábio Costa','fabio.costa@email.com','Salvador','01/05/2023'),
+	('Gabriela Rocha','gabriela.rocha@email.com','Recife','18/05/2023'),
+	('Hugo Martins','hugo.martins@email.com','São Paulo','02/06/2023'),
+	('Isabela Nunes','isabela.nunes@email.com','Fortaleza','25/06/2023'),
+	('João Pedro','joao.pedro@email.com','Brasília','11/07/2023'),
+	('Karina Dias','karina.dias@email.com','Rio de Janeiro','03/08/2023'),
+	('Lucas Barbosa','lucas.barbosa@email.com','São Paulo','29/08/2023'),
+	('Mariana Teixeira','mariana.teixeira@email.com','Curitiba','14/09/2023'),
+	('Nelson Ramos','nelson.ramos@email.com','Belo Horizonte','01/10/2023'),
+	('Olívia Castro','olivia.castro@email.com','Porto Alegre','19/10/2023')
+;*/
+
+-- SELECT * FROM clientes;
+
+/*CREATE TABLE pedidos(
+
+	ID SERIAL PRIMARY KEY NOT NULL,
+		cliente_id VARCHAR(100) NOT NULL,
+		data_pedido VARCHAR(100) NOT NULL,
+		status VARCHAR(20) NOT NULL
+);*/
+
+/*INSERT INTO pedidos(cliente_id, data_pedido, status)
+	VALUES
+	('1', '2024-01-05','entregue'),
+	('2', '2024-01-08','entregue'),
+	('3', '2024-01-05','entregue'),
+	('1', '2024-01-05','cancelado'),
+	('4', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('9', '2024-01-05','entregue'),
+	('5', '2024-01-05','entregue'),
+	('6', '2024-01-05','entregue'),
+	('1', '2024-03-22','cancelado'),
+	('15', '2024-05-05','entregue'),
+	('17', '2024-01-05','entregue'),
+	('10', '2024-02-07','em transporte'),
+	('16', '2024-01-05','processando'),
+	('18', '2024-01-03','entregue')
+;*/
+
+ALTER TABLE pedidos ADD data_pedido VARCHAR(100) NOT NULL
+
+SELECT * FROM pedidos
+
+SELECT 
+	clientes.nome, 
+	clientes.email, 
+	pedidos.cliente_id,
+	pedidos.status,
+	pedidos.data_pedido
+		FROM clientes
+			INNER JOIN pedidos
+			ON pedidos.id = clientes.id
+;
+
+	
+
+	
