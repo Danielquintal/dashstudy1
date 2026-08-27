@@ -23,4 +23,67 @@ ALTER TABLE consumo_alimentar ALTER COLUMN calorias DROP NOT NULL;
 -- Integrei o banco de dados do postgresql onde a planilha estava inserida com o PowerBi
 -- Gerei um gráfico comparativo entre diferença % de contagem de calorias consumidas entre homens e mulheres que residem em diversas cidades brasileiras
 
+												------- COMANDOS UTILIZADOS PARA O ESTUDO ---------
+-- Ver as primeiras 10 linhas
+SELECT * FROM consumo_alimentar LIMIT 10;
+
+-- Contar total de registros
+SELECT COUNT(*) FROM consumo_alimentar;
+
+-- Ver estrutura da tabela (colunas e tipos)
+\d consumo_alimentar
+
+-- Adicionar uma nova coluna
+ALTER TABLE consumo_alimentar ADD COLUMN observacao TEXT;
+
+-- Remover uma coluna
+ALTER TABLE consumo_alimentar DROP COLUMN observacao;
+
+-- Renomear uma coluna
+ALTER TABLE consumo_alimentar RENAME COLUMN peso TO peso_kg;
+
+-- Apagar uma linha específica
+DELETE FROM consumo_alimentar WHERE id = 22;
+
+-- Apagar linhas com calorias nulas 
+DELETE FROM consumo_alimentar WHERE calorias IS NULL;
+
+-- Atualizar um valor específico
+UPDATE consumo_alimentar
+SET calorias = 250
+WHERE id = 22;
+
+-- Preencher nulos com um valor padrão (ex: 0)
+UPDATE consumo_alimentar
+SET calorias = 0
+WHERE calorias IS NULL;
+
+-- Média de calorias por categoria
+SELECT categoria, AVG(calorias) AS media_calorias
+FROM consumo_alimentar
+GROUP BY categoria
+ORDER BY media_calorias DESC;
+
+-- Quantidade de registros por cidade
+SELECT cidade, COUNT(*) AS total
+FROM consumo_alimentar
+GROUP BY cidade
+ORDER BY total DESC;
+
+-- Total de calorias por sexo
+SELECT sexo, SUM(calorias) AS total_calorias
+FROM consumo_alimentar
+GROUP BY sexo;
+
+-- Filtrar por cidade
+SELECT * FROM consumo_alimentar WHERE cidade = 'Recife';
+
+-- Filtrar por categoria e sexo
+SELECT * FROM consumo_alimentar WHERE categoria = 'Carnes' AND sexo = 'M';
+
+-- Registros com calorias nulas
+SELECT * FROM consumo_alimentar WHERE calorias IS NULL;
+
+-- Faixa de idade
+SELECT * FROM consumo_alimentar WHERE idade BETWEEN 20 AND 30;
 
