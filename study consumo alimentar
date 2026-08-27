@@ -1,0 +1,26 @@
+CREATE TABLE consumo_alimentar(
+
+	id_registro SERIAL PRIMARY KEY,
+	id_pessoa VARCHAR(50) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	idade VARCHAR(50) NOT NULL,
+	sexo VARCHAR(50) NOT NULL,
+	cidade VARCHAR(50) NOT NULL,
+  categoria_alimento VARCHAR(50) NOT NULL,
+	calorias VARCHAR(50) NOT NULL,
+	data VARCHAR(50) NOT NULL
+				
+);
+
+COPY consumo_alimentar
+	FROM 'C:\Users\clini\OneDrive\Documentos\consumo_alimentar.csv' 
+		DELIMITER ';' 
+			CSV HEADER
+      
+--Utilizei o seguinte comando para fazer com que a integração funcionasse 
+ALTER TABLE consumo_alimentar ALTER COLUMN calorias DROP NOT NULL;
+
+-- Integrei o banco de dados do postgresql onde a planilha estava inserida com o PowerBi
+-- Gerei um gráfico comparativo entre diferença % de contagem de calorias consumidas entre homens e mulheres que residem em diversas cidades brasileiras
+
+
