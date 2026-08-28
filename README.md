@@ -1,1 +1,1 @@
-# Esse repositório representa meus estudos em SQL e power BI
+# Esse repositório representa meus estudos em SQL
