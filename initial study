@@ -12,6 +12,31 @@ ALTER DATA BASE: Alterar banco de dados
 DELETE FROM: Deletar algum dado de um lugar específico
 INNER JOIN: Dados de um lugar externo que irei integrar em um local inicial
 
+-- Atualizar colunas e valores
+UPDATE nome_da_tabela 
+	SET nome_da_coluna = novo_valor 
+		WHERE condicao;
+
+-- Merge: compara uma tabela de origem com uma tabela de destino e faz alterações com base nas diferenças
+MERGE INTO tabela_destino AS destino
+USING tabela_origem AS origem
+ON destino.id = origem.id
+WHEN MATCHED THEN
+    UPDATE SET destino.nome = origem.nome
+WHEN NOT MATCHED THEN
+    INSERT (id, nome) VALUES (origem.id, origem.nome);
+
+-- Union: UNION combina o resultado de dois ou mais comandos SELECT em um único conjunto de linhas, removendo duplicatas
+SELECT nome FROM clientes_sp
+UNION
+SELECT nome FROM clientes_rj;
+
+
+STRING_AGG OU GROUP_CONCAT transformar dados de várias linhas em uma única linha separados por vírgula, use funções de agregação
+SELECT categoria_id, STRING_AGG(produto_name, ', ') AS produtos
+FROM produtos
+GROUP BY categoria_id;
+
 
 
 
